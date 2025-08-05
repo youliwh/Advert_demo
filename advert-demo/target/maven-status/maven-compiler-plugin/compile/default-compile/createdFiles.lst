@@ -1,0 +1,5 @@
+com\example\advert\DemoApplication.class
+com\example\advert\model\Advert.class
+com\example\advert\controller\AdvertController.class
+com\example\advert\dao\AdvertRepository.class
+com\example\advert\service\AdvertService.class

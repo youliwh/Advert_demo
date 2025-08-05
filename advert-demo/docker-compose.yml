@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # PostgreSQL 数据库
+  postgres:
+    image: postgres:13-alpine
+    container_name: advert-postgres
+    environment:
+      POSTGRES_DB: advert_demo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: wh200105104036
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - advert-network
+
+  # 广告管理应用
+  advert-app:
+    build: .
+    container_name: advert-demo
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/advert_demo
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: wh200105104036
+    depends_on:
+      - postgres
+    networks:
+      - advert-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  advert-network:
+    driver: bridge 

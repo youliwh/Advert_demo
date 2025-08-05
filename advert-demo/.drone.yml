@@ -1,0 +1,43 @@
+kind: pipeline
+name: default
+type: docker
+
+steps:
+  - name: 单元测试
+    image: maven:3.8-openjdk-8
+    commands:
+      - mvn clean test
+
+  - name: 构建jar包
+    image: maven:3.8-openjdk-8
+    commands:
+      - mvn clean package -DskipTests
+
+  - name: 构建并推送Docker镜像
+    image: plugins/docker
+    settings:
+      repo: your-dockerhub-username/advert-demo
+      tags: latest
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+
+  - name: 远程部署
+    image: appleboy/ssh-action
+    settings:
+      host: your-server-ip
+      username: your-ssh-user
+      password:
+        from_secret: ssh_password
+      port: 22
+      script:
+        - cd /your/server/project/path
+        - docker-compose down
+        - docker-compose pull
+        - docker-compose up -d --build
+
+trigger:
+  branch:
+    - main
+    - master
