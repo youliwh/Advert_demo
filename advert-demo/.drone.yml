@@ -26,10 +26,9 @@ steps:
   - name: 远程部署
     image: appleboy/ssh-action
     settings:
-      host: your-server-ip
-      username: your-ssh-user
-      password:
-        from_secret: ssh_password
+      host: https://droneyouli.com
+      username: advert
+      password: 123456
       port: 22
       script:
         - cd /your/server/project/path
