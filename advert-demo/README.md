@@ -79,7 +79,7 @@ GET /api/adverts/search/tags?tag=促销
 GET /api/adverts/search/extended-property?property=target_audience&value=young_adults
 ```
 
-# 广告管理 API
+# 广告 API
 
 ## CRUD
 | 方法 | 路径 | 描述 |
