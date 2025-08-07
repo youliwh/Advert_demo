@@ -3,6 +3,7 @@ D:\javaproject\advert-demo\src\main\java\com\example\advert\dao\AdvertStatsRepos
 D:\javaproject\advert-demo\src\main\java\com\example\advert\model\Advert.java
 D:\javaproject\advert-demo\src\main\java\com\example\advert\dao\AdvertRepository.java
 D:\javaproject\advert-demo\src\main\java\com\example\advert\dao\CategoryRepository.java
+D:\javaproject\advert-demo\src\main\java\com\example\advert\config\JsonConfig.java
 D:\javaproject\advert-demo\src\main\java\com\example\advert\controller\AdvertController.java
 D:\javaproject\advert-demo\src\main\java\com\example\advert\config\DataInitializer.java
 D:\javaproject\advert-demo\src\main\java\com\example\advert\service\AdvertStatsService.java

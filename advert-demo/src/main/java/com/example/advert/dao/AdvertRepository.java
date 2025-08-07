@@ -37,6 +37,18 @@ public interface AdvertRepository extends JpaRepository<Advert, Long> {
     List<Advert> findByContentKeyword(@Param("keyword") String keyword);
     
     /**
+     * JSON查询：根据标签查询广告
+     */
+    @Query(value = "SELECT * FROM adverts WHERE tags::jsonb @> :tagJson AND is_active = true", nativeQuery = true)
+    List<Advert> findByTag(@Param("tagJson") String tagJson);
+    
+    /**
+     * JSON查询：根据扩展属性查询广告
+     */
+    @Query(value = "SELECT * FROM adverts WHERE extended_properties::jsonb ->> 'category' = :category AND is_active = true", nativeQuery = true)
+    List<Advert> findByExtendedPropertyCategory(@Param("category") String category);
+    
+    /**
      * 根据分类ID查找广告
      */
     List<Advert> findByCategoryIdAndIsActiveTrue(Long categoryId);

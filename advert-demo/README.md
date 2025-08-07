@@ -69,7 +69,9 @@ CREATE TABLE adverts (
     end_time TIMESTAMP,
     created_time TIMESTAMP,
     updated_time TIMESTAMP,
-    is_active BOOLEAN DEFAULT TRUE
+    is_active BOOLEAN DEFAULT TRUE,
+    extended_properties JSONB,  -- JSON扩展属性
+    tags JSONB                   -- JSON标签数组
 );
 ```
 
@@ -171,6 +173,35 @@ docker-compose down
 ```
 
 ## 📡 API 接口
+
+### JSON 功能支持
+
+本项目支持 PostgreSQL 的 JSON/JSONB 数据类型，提供灵活的扩展属性存储和查询功能：
+
+#### JSON 字段说明
+- **extended_properties**: 存储广告的扩展属性，如目标受众、季节、产品类型等
+- **tags**: 存储广告标签数组，支持标签搜索
+
+#### JSON 查询示例
+```bash
+# 根据标签搜索广告
+GET /api/adverts/search/tags?tag=促销
+
+# 根据扩展属性搜索广告
+GET /api/adverts/search/extended-property?property=target_audience&value=young_adults
+```
+
+#### JSON 数据示例
+```json
+{
+  "extended_properties": {
+    "target_audience": "young_adults",
+    "season": "spring",
+    "discount_type": "percentage"
+  },
+  "tags": ["促销", "春季", "新品"]
+}
+```
 
 ### 广告管理 API
 

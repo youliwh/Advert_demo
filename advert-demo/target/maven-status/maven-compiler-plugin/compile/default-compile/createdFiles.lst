@@ -12,6 +12,7 @@ com\example\advert\service\AdvertStatsService.class
 com\example\advert\controller\AdvertStatsController.class
 com\example\advert\controller\UserController.class
 com\example\advert\config\DataInitializer.class
+com\example\advert\config\JsonConfig.class
 com\example\advert\model\Advert$AdvertStatus.class
 com\example\advert\service\UserService.class
 com\example\advert\dao\UserRepository.class

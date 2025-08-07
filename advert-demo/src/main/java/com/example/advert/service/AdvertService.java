@@ -58,6 +58,21 @@ public class AdvertService {
     }
     
     /**
+     * 根据标签查询
+     */
+    public List<Advert> findByTag(String tag) {
+        String tagJson = "[\"" + tag + "\"]";
+        return advertRepository.findByTag(tagJson);
+    }
+    
+    /**
+     * 根据扩展属性查询
+     */
+    public List<Advert> findByExtendedProperty(String property, String value) {
+        return advertRepository.findByExtendedPropertyCategory(value);
+    }
+    
+    /**
      * 保存广告
      */
     public Advert save(Advert advert) {

@@ -72,6 +72,26 @@ public class AdvertController {
     }
     
     /**
+     * 根据标签搜索广告
+     */
+    @GetMapping("/search/tags")
+    public ResponseEntity<List<Advert>> searchByTags(@RequestParam String tag) {
+        List<Advert> adverts = advertService.findByTag(tag);
+        return ResponseEntity.ok(adverts);
+    }
+    
+    /**
+     * 根据扩展属性搜索广告
+     */
+    @GetMapping("/search/extended-property")
+    public ResponseEntity<List<Advert>> searchByExtendedProperty(
+            @RequestParam String property, 
+            @RequestParam String value) {
+        List<Advert> adverts = advertService.findByExtendedProperty(property, value);
+        return ResponseEntity.ok(adverts);
+    }
+    
+    /**
      * 创建新广告
      */
     @PostMapping

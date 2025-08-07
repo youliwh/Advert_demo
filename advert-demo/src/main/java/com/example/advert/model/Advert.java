@@ -57,6 +57,14 @@ public class Advert {
     @Column(name = "spent_amount")
     private Double spentAmount = 0.0;
     
+    // JSON字段示例：广告扩展属性
+    @Column(name = "extended_properties", columnDefinition = "jsonb")
+    private String extendedProperties;
+    
+    // JSON字段示例：广告标签
+    @Column(name = "tags", columnDefinition = "jsonb")
+    private String tags;
+    
     // 广告状态枚举
     public enum AdvertStatus {
         DRAFT,      // 草稿
@@ -198,6 +206,22 @@ public class Advert {
     
     public void setSpentAmount(Double spentAmount) {
         this.spentAmount = spentAmount;
+    }
+    
+    public String getExtendedProperties() {
+        return extendedProperties;
+    }
+    
+    public void setExtendedProperties(String extendedProperties) {
+        this.extendedProperties = extendedProperties;
+    }
+    
+    public String getTags() {
+        return tags;
+    }
+    
+    public void setTags(String tags) {
+        this.tags = tags;
     }
     
     @PrePersist
