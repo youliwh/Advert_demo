@@ -32,6 +32,42 @@ public class Advert {
     @Column(name = "is_active")
     private Boolean isActive = true;
     
+    @Column(name = "category_id")
+    private Long categoryId;
+    
+    @Column(name = "user_id")
+    private Long userId;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private AdvertStatus status = AdvertStatus.DRAFT;
+    
+    @Column(name = "priority")
+    private Integer priority = 0;
+    
+    @Column(name = "start_time")
+    private LocalDateTime startTime;
+    
+    @Column(name = "end_time")
+    private LocalDateTime endTime;
+    
+    @Column(name = "budget")
+    private Double budget = 0.0;
+    
+    @Column(name = "spent_amount")
+    private Double spentAmount = 0.0;
+    
+    // 广告状态枚举
+    public enum AdvertStatus {
+        DRAFT,      // 草稿
+        PENDING,    // 待审核
+        APPROVED,   // 已审核
+        REJECTED,   // 已拒绝
+        ACTIVE,     // 投放中
+        PAUSED,     // 暂停
+        COMPLETED   // 已完成
+    }
+    
     // 构造函数
     public Advert() {}
     
@@ -98,6 +134,70 @@ public class Advert {
     
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
+    }
+    
+    public Long getCategoryId() {
+        return categoryId;
+    }
+    
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+    
+    public Long getUserId() {
+        return userId;
+    }
+    
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+    
+    public AdvertStatus getStatus() {
+        return status;
+    }
+    
+    public void setStatus(AdvertStatus status) {
+        this.status = status;
+    }
+    
+    public Integer getPriority() {
+        return priority;
+    }
+    
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+    
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+    
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+    
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+    
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
+    
+    public Double getBudget() {
+        return budget;
+    }
+    
+    public void setBudget(Double budget) {
+        this.budget = budget;
+    }
+    
+    public Double getSpentAmount() {
+        return spentAmount;
+    }
+    
+    public void setSpentAmount(Double spentAmount) {
+        this.spentAmount = spentAmount;
     }
     
     @PrePersist
